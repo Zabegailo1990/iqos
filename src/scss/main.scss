@@ -297,6 +297,7 @@
 .accordion{
     text-align: left;
     &__item{
+        position: relative;
         @include media-tablet{
             border-top: 1px solid #E5E5E5;
         }
@@ -307,31 +308,41 @@
     &__faq{
         font-size: 12px;
         cursor: pointer;
-        padding: 22px 0 25px;
+        padding-top: 8px;
         position: relative;
         @include media-tablet{
             font-size: 20px;
+            padding: 22px 0 25px;
         }
     }
-    &__faq::before{
-        content: "";
+    &__faq--active{
+        @include media-tablet{
+            font-weight: 700;
+        }
+    }
+    &__arrow{
         position: absolute;
         width: 5px;
         height: 5px;
-        top: 50%;
+        top: 10px;
         right: 0;
         transform: translateY(-50%) rotate(45deg);
         border-bottom: 1px solid #D6A76F;
         border-right: 1px solid #D6A76F;
+        transition: all .3s;
         @include media-tablet{
             width: 10px;
             height: 10px;
         }
     }
+    &__arrow--active{
+        transform: translateY(-50%) rotate(-135deg);
+    }
     &__answer{
         font-size: 9px;
         padding-top: 4px;
         display: none;
+        margin-bottom: 7px;
         @include media-tablet{
             font-size: 18px;
             padding-top: 39px;
