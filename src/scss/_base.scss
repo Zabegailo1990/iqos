@@ -1,0 +1,17 @@
+@import "_vars.scss";
+
+*{
+    box-sizing: border-box;
+    &:before, &:after{
+		box-sizing: border-box;
+    } 
+}
+	
+body, p, h1, h2, h3, h4 {
+    margin: 0;
+}
+	
+a{
+  text-decoration: none;
+  display: inline-block;
+}
