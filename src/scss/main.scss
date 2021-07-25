@@ -2,7 +2,6 @@
 @import "_vars.scss";
 @import "_media.scss";
 
-
 .root{
     text-align: center;
     margin: 0;
@@ -32,11 +31,17 @@
     }
 }
 
+.title--size-l{
+    @include media-desktop{
+        font-size: 60px;
+        letter-spacing: 3px;
+    }
+}
+
 .title--size-s{
     @include media-tablet{
         font-size: 30px;
-    }
-    
+    }   
 }
 
 .text{
@@ -67,6 +72,7 @@
         margin-bottom: 14px;
         @include media-tablet{
             width:110px;
+            margin-bottom: 16px;
         }
     }
     &__subtitle{
@@ -77,6 +83,10 @@
         @include media-tablet{
             font-size: 28px;
             margin-bottom: 262px;
+        }
+        @include media-desktop{
+            font-size: 30px;
+            margin-bottom: 224px;
         }
     }
     &__btn{
@@ -98,9 +108,10 @@
         border-bottom: 1px solid #fff;
         border-right: 1px solid #fff;
         left: 50%;
-        top: 100%;
+        bottom: -13px;
         transform: translateX(-50%) rotate(45deg);
         @include media-tablet{
+            bottom: -32px;
             width: 25px;
             height: 25px;
             border-bottom: 3px solid #fff;
@@ -138,6 +149,7 @@
     }
     &__title{
         margin-bottom: 16px;
+        padding: 0 50px;
         @include media-tablet{
             margin-bottom: 36px;
         }
@@ -188,6 +200,7 @@
         }
     }
     &__text{
+        padding: 0 10px;
         @include media-tablet{
             font-size: 14px;
         }
@@ -251,14 +264,21 @@
 
 .faq{
     min-height: 443px;
-    &__inner{
-        padding: 34px 16px 22px;
+    &__inner:first-child{
+        padding: 34px 16px 10px;
         background-color: #F5F5F3;
         @include media-tablet{
             background-color: #fff;
-            padding: 48px 16px 22px;
+            padding: 48px 40px 22px;
         }
     }
+     &__inner:last-child{
+        padding: 12px 16px;
+        border-bottom: 1px solid #ECEAEB;
+        @include media-tablet{
+           display: none;
+        }
+     }
     &__title{
         font-size: 20px;
         font-weight: 400;
@@ -266,6 +286,9 @@
         @include media-tablet{
             font-size: 24px;
             margin-bottom: 35px;
+        }
+        @include media-desktop{
+            font-size: 32px;
         }
     }
     &__subtitle{
@@ -281,7 +304,6 @@
     &__list{
         max-width: 178px;
         font-size: 10px;
-        margin-bottom: 12px;
         @include media-tablet{
             display: none;
         }
@@ -298,34 +320,35 @@
     text-align: left;
     &__item{
         position: relative;
+        padding: 11px 0 11px;
         @include media-tablet{
             border-top: 1px solid #E5E5E5;
+            padding: 22px 0 22px;
         }
     }
     &__item:not(:first-child){
         border-top: 1px solid #E5E5E5;
     }
+    &__item:last-child{
+        @include media-tablet{
+            border-bottom: 1px solid #E5E5E5;
+        }
+    }
     &__faq{
         font-size: 12px;
         cursor: pointer;
-        padding-top: 8px;
         position: relative;
         @include media-tablet{
             font-size: 20px;
-            padding: 22px 0 25px;
         }
     }
-    &__faq--active{
-        @include media-tablet{
-            font-weight: 700;
-        }
-    }
-    &__arrow{
+    &__faq::after{
+        content: "";
         position: absolute;
         width: 5px;
         height: 5px;
-        top: 10px;
-        right: 0;
+        top: 50%;
+        right: 4px;
         transform: translateY(-50%) rotate(45deg);
         border-bottom: 1px solid #D6A76F;
         border-right: 1px solid #D6A76F;
@@ -335,19 +358,23 @@
             height: 10px;
         }
     }
-    &__arrow--active{
-        transform: translateY(-50%) rotate(-135deg);
+    &__faq--active.accordion__faq::after{
+        @include media-desktop{
+            transform: rotate(-135deg);
+        }
+    }
+    &__faq--active{
+        @include media-tablet{
+            font-weight: 700;
+        }
     }
     &__answer{
         font-size: 9px;
-        padding-top: 4px;
         display: none;
-        margin-bottom: 7px;
         @include media-tablet{
             font-size: 18px;
             padding-top: 39px;
-            margin-bottom: 28px;
+            margin-bottom: 10px;
         }
     }
 }
-
